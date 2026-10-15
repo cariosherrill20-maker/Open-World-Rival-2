@@ -3,6 +3,9 @@ import { WebSocketServer } from 'ws';
 import { createServer } from 'http';
 import crypto from 'crypto';
 const app=express();app.use(express.static('public'));const server=createServer(app);const wss=new WebSocketServer({server});
+app.get("/", (req, res) => {
+  res.sendFile("index.html", { root: process.cwd() });
+});
 const players=new Map();const WORLD=85;const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
 const spawn=()=>({x:(Math.random()-.5)*18,z:(Math.random()-.5)*18});
 const npcs=Array.from({length:22},(_,i)=>({id:i,x:(Math.random()-.5)*145,z:(Math.random()-.5)*145,dir:Math.random()*6.28,hp:100,down:0,kind:i<5?'police':'citizen'}));
