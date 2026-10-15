@@ -2,7 +2,7 @@ import express from 'express';
 import { WebSocketServer } from 'ws';
 import { createServer } from 'http';
 import crypto from 'crypto';
-const app=express();app.use(express.static('public'));const server=createServer(app);const wss=new WebSocketServer({server});
+const app=express();app.use(express.static(process.cwd());const server=createServer(app);const wss=new WebSocketServer({server});
 app.get("/", (req, res) => {
   res.sendFile("index.html", { root: process.cwd() });
 });
